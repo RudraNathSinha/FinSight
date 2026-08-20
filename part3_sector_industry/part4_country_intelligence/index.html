@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- © All rights reserved FinSight prepared by Rudra Nath Sinha -->
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Intelligence | FinSight Sector</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:'#eef9ff',100:'#d9f1ff',200:'#bce7ff',300:'#8ed8ff',
+              400:'#59c0ff',500:'#339fff',600:'#1a7ff5',700:'#1368e1',
+              800:'#1654b6',900:'#18488f',950:'#132d57'
+            }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased">
+  <div style="background:#0c4a6e;color:#e0f2fe;text-align:center;font-size:12px;padding:8px 12px;">
+    <strong>Country Intelligence</strong> — country → sector structure → equity deep-links · FinSight educational workspace ·
+    <a href="/" style="color:#bae6fd;text-decoration:underline;">FinSight Home</a>
+  </div>
+
+  <div class="flex h-full overflow-hidden" style="height:calc(100vh - 36px)">
+    <aside id="sidebar" class="w-64 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col z-30">
+      <div class="px-5 py-5 border-b border-slate-200 dark:border-slate-800">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg shadow-brand-500/30">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold tracking-tight">FinSight</h1>
+            <p class="text-[10px] uppercase tracking-widest text-slate-500">Market Intelligence</p>
+          </div>
+        </a>
+      </div>
+      <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Platform</p>
+        <a href="../index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>Home</span>
+        </a>
+        <a href="../part1_sector_industry/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>Sector & Industry</span>
+        </a>
+        <a href="../part2_stock_visualization/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>Stock Visualization</span>
+        </a>
+        <a href="../part3_stock_analysis/index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <span>Stock Analysis</span>
+        </a>
+        <a href="index.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-brand-50 dark:bg-brand-950/40 text-brand-700 dark:text-brand-300">
+          <span>Country Intelligence</span>
+        </a>
+        <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+        <p class="px-3 mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Cross-product</p>
+        <a href="/equity/" target="_blank" rel="noopener" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Global Equity →</a>
+        <a href="/country-ranking/" target="_blank" rel="noopener" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Country Ranking →</a>
+        <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+        <a href="../methodology.html" class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Methodology</a>
+        <a href="../disclaimer.html" class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Disclaimer</a>
+      </nav>
+      <div class="mt-auto px-4 py-3 border-t border-slate-200 dark:border-slate-800">
+        <p class="text-[10px] leading-snug text-center text-slate-400">© All rights reserved FinSight<br>prepared by Rudra Nath Sinha</p>
+      </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <header class="flex-shrink-0 h-14 px-4 md:px-6 flex items-center justify-between bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 gap-3">
+        <div class="min-w-0">
+          <h2 class="text-base font-semibold truncate">Country Intelligence</h2>
+          <p class="text-[11px] text-slate-500 truncate">For DA / DS / ML / Finance research workflows</p>
+        </div>
+        <button id="themeToggle" type="button" class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm border border-slate-200 dark:border-slate-700">Theme</button>
+      </header>
+
+      <div class="flex-1 overflow-y-auto p-4 md:p-6">
+        <div class="max-w-6xl mx-auto space-y-5">
+          <!-- Country picker -->
+          <section class="ci-stat">
+            <div class="flex flex-col md:flex-row md:items-end gap-3">
+              <div class="flex-1">
+                <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Select country</label>
+                <input id="countrySearch" type="search" placeholder="Search country…" class="mt-1 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm" />
+              </div>
+              <div class="flex-1">
+                <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Country</label>
+                <select id="countrySelect" class="mt-1 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm"></select>
+              </div>
+              <div class="flex gap-2 flex-wrap">
+                <a id="linkEquity" href="/equity/" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-semibold bg-brand-600 text-white hover:bg-brand-700">Open in Equity →</a>
+                <a id="linkRanking" href="/country-ranking/" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:border-brand-400">Country Ranking →</a>
+              </div>
+            </div>
+            <p id="countryHint" class="mt-2 text-xs text-slate-500">Loading universe…</p>
+          </section>
+
+          <!-- Subtabs -->
+          <div class="border-b border-slate-200 dark:border-slate-800 overflow-x-auto">
+            <div class="flex min-w-max" id="subtabBar" role="tablist">
+              <button type="button" class="ci-tab active" data-tab="overview">1 · Country analysis</button>
+              <button type="button" class="ci-tab" data-tab="viz">2 · Visualization</button>
+              <button type="button" class="ci-tab" data-tab="structure">3 · Sector & industry</button>
+              <button type="button" class="ci-tab" data-tab="eval">4 · Evaluation</button>
+            </div>
+          </div>
+
+          <!-- Tab panels -->
+          <section id="panel-overview" class="ci-panel active space-y-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="overviewStats"></div>
+            <div class="ci-stat">
+              <h3 class="text-sm font-semibold mb-2">Research brief</h3>
+              <p id="overviewBrief" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-3">
+              <a id="cardEquity" class="ci-link-card" href="/equity/" target="_blank" rel="noopener">
+                <span class="text-xs font-semibold text-brand-600">Global Equity Universe</span>
+                <span class="text-sm font-medium">Listings & exchanges for this country</span>
+                <span class="text-xs text-slate-500">Deep-link opens equity country view</span>
+              </a>
+              <a id="cardRanking" class="ci-link-card" href="/country-ranking/" target="_blank" rel="noopener">
+                <span class="text-xs font-semibold text-brand-600">Country Ranking</span>
+                <span class="text-sm font-medium">Macro / institutional scorecard</span>
+                <span class="text-xs text-slate-500">Multi-dimensional country ranks</span>
+              </a>
+            </div>
+          </section>
+
+          <section id="panel-viz" class="ci-panel space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="ci-stat">
+                <h3 class="text-sm font-semibold mb-3">Sector mix (stock count)</h3>
+                <canvas id="chartSector" height="220"></canvas>
+              </div>
+              <div class="ci-stat">
+                <h3 class="text-sm font-semibold mb-3">Top industries</h3>
+                <canvas id="chartIndustry" height="220"></canvas>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500">Charts update when you change country. Useful for DA/DS exploratory analysis of market structure concentration.</p>
+          </section>
+
+          <section id="panel-structure" class="ci-panel space-y-4">
+            <div class="ci-stat overflow-x-auto">
+              <h3 class="text-sm font-semibold mb-3">Sectors in this country</h3>
+              <table class="w-full text-sm">
+                <thead><tr class="text-left text-xs text-slate-500 border-b border-slate-200 dark:border-slate-800">
+                  <th class="py-2 pr-2">Sector</th><th class="py-2 pr-2 text-right">Stocks</th><th class="py-2 pr-2 text-right">Industries</th><th class="py-2">Open</th>
+                </tr></thead>
+                <tbody id="sectorTable"></tbody>
+              </table>
+            </div>
+            <div class="ci-stat overflow-x-auto">
+              <h3 class="text-sm font-semibold mb-3">Industries (top 25)</h3>
+              <table class="w-full text-sm">
+                <thead><tr class="text-left text-xs text-slate-500 border-b border-slate-200 dark:border-slate-800">
+                  <th class="py-2 pr-2">Industry</th><th class="py-2 pr-2">Sector</th><th class="py-2 text-right">Stocks</th>
+                </tr></thead>
+                <tbody id="industryTable"></tbody>
+              </table>
+            </div>
+            <a href="../part1_sector_industry/index.html" class="text-sm text-brand-600 hover:underline">Open full Sector & Industry explorer →</a>
+          </section>
+
+          <section id="panel-eval" class="ci-panel space-y-4">
+            <div class="grid md:grid-cols-3 gap-3" id="evalCards"></div>
+            <div class="ci-stat">
+              <h3 class="text-sm font-semibold mb-2">Sample names (for screening handoff)</h3>
+              <div id="sampleSymbols" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div class="ci-stat text-sm text-slate-600 dark:text-slate-300 space-y-2">
+              <p><strong>Analyst workflow:</strong> use Tab 1 for context → Tab 2 for concentration → Tab 3 for structure → Tab 4 for shortlist, then jump to Equity analysis or Country Ranking for macro scores.</p>
+              <p class="text-xs text-slate-500">Educational only · Not investment advice · Not SEBI-registered research.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../shared/theme.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

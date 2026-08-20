@@ -1,0 +1,10 @@
+FinSightApplication/
+  landing/                  Unified commercial + product landing page (TO BUILD)
+  part1_country_ranking/    Country Ranking System (copied from stock-insight/frontend/country-ranking)
+  part2_global_equity/      Global Equity Universe (from stock-insight — full tree; if incomplete in sandbox, use artifacts/stock-insight as source of truth)
+  part3_sector_industry/    Sector/Industry ranks + analysis (copied from webapp_NO_AI)
+
+Canonical sources (if a part folder is incomplete):
+  Part 1: artifacts/stock-insight/frontend/country-ranking/
+  Part 2: artifacts/stock-insight/
+  Part 3: artifacts/webapp_NO_AI/

@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FinSight: Start all (one terminal)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/FinSightApplication/start_finsight.py",
+      "cwd": "${workspaceFolder}/FinSightApplication",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "FinSight: Start all (cwd = FinSightApplication)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/start_finsight.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
